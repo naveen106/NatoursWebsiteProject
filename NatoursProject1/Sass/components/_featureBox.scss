@@ -1,0 +1,23 @@
+.featureBox
+{
+   background-color: rgba($color-white, 0.8);
+   font-size: 1.5rem;
+   text-align: center;
+   border-radius: 3px;
+   box-shadow: 0 1.5rem 4.5rem rgba($color-black, 0.35);
+   padding: 4.5rem 2.5rem;
+   line-height: 2.2rem;
+   transition: transform 0.2s;  // used 'transform' instead of 'all', so transformation will take 0.3s 
+
+   &Icon {
+      font-size: 6rem;
+      margin-bottom: 2.2rem;
+      @include text-gradient;
+   }
+
+   &:hover{
+      transform: translateY(-1.5rem) scale(1.04);
+   }
+
+  
+}

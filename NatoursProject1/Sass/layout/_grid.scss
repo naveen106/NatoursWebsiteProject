@@ -1,0 +1,82 @@
+.row
+{
+   max-width: $grid-width;
+ //  background-color: #eee;
+   margin: 0 auto;
+ //  margin-bottom: $space-vertical;
+
+   @include respond(tabletPort) {
+      max-width: 90rem;           
+   }
+
+   @include respond(phone) {
+      max-width: 60rem;      
+   }
+
+   @include clearFix;
+
+   .col-1-of-2 {
+      width: calc((100% - #{$space-horizontal}) / 2);
+        
+      @media(min-width: 56.25em){
+         @include grid-float-settings;     
+      }    
+      
+      @include respond(tabletPort){
+         width: 80%;
+         margin-right: auto;
+         margin-left: auto;   
+      }
+   }
+
+   .col-1-of-4 {
+      width: calc((100% - 3* #{$space-horizontal}) / 4);
+      //  @include grid-float-settings; 
+      
+      
+      @include respond(tabletPort) {
+         margin: 10% auto $space-vertical-small auto;      
+         width: 80%;         
+      }
+     
+      @include respond(phone) {
+      margin: 10% auto $space-vertical-small auto;      
+      width: 80%;
+      }  
+
+      @include respond(tabletLand-2) {
+         @include grid-float-settings;
+      }
+   }
+
+   .col-1-of-3 {
+      width: calc((100% - 2 * #{$space-horizontal}) / 3);
+
+      @include respond(tabletPort) {
+         width: 50vw;
+         margin-right: auto;
+         margin-left: auto;
+      }
+      
+      @include respond(phone){
+         width: 80%;
+         margin-right: auto;
+         margin-left: auto;       
+       }
+      
+         @media(min-width: 56.25em){
+         @include grid-float-settings;     
+      }    
+   }
+
+   .col-1-of-3:not(:last-child){
+      @include respond(phone){
+         margin-bottom: 3.5rem;
+      }
+
+      @include respond(tabletPort){
+         margin-bottom: 3.5rem;
+      }
+   }
+
+}

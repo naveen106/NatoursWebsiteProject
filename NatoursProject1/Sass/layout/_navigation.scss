@@ -1,0 +1,170 @@
+.navigation {
+
+   &Checkbox {
+      display: none;
+   }
+
+   &Button {
+      cursor: pointer;
+      height: 7rem;
+      width: 7rem;
+      background-color: $color-white;
+      border-radius: 50%;
+      box-shadow: 0 .2rem 1.5rem rgba($color-black, 0.4);
+      position: fixed;
+      top: 6rem;
+      right: 6rem;
+      z-index: 120;
+
+      @include respond(tabletPort) {
+         top: 3.5rem;
+         right: 3.5rem;
+      }
+
+      
+      @include respond(phone) {
+         top: 3rem;
+         right: 3.5rem;
+      }
+   }
+
+   &Background { 
+      visibility: hidden;      
+      height: 6rem;
+      width: 6rem;
+      position: fixed;
+      top: 6.5rem;
+      right: 6.5rem;
+      z-index: 100;
+      background-image: radial-gradient($color-primary-light, $color-primary-dark);
+      border-radius: 50%;
+      transition: all .6s cubic-bezier(.79,-0.3,.22,1.18);
+
+      @include respond(tabletPort) {
+         top: 3.5rem;
+         right: 4rem;
+      }
+      
+      @include respond(phone) {
+         top: 3.5rem;
+         right: 4rem;
+      }
+   }
+
+   &Nav {
+      opacity: 0;
+      height: 100vh;
+      width: 0; 
+      position: fixed;
+      top: 0;
+      right: 0; 
+      z-index: 110;
+      transition: all .6s cubic-bezier(.79,-0.3,.22,1.18);
+   }
+
+   &List { 
+      visibility: hidden;
+      //width: 100%;     
+        opacity: 0;
+      list-style: none;
+      @include centeringTheContent;
+      z-index: 140;
+      transition: all .6s cubic-bezier(.79,-0.3,.22,1.18);
+   }
+
+   &Link {
+    
+      &:link, &:visited {
+       
+         display: inline-block;      //VIP. don't forget this, otherwise transform property will not work
+         padding: 0 1.5rem;
+         text-decoration: none;
+         font-weight: 300;
+         font-size: 3rem;
+         line-height: 6.5rem;
+         color: $color-white;
+         background-image: linear-gradient(45deg, transparent 50%, white 50%);
+         background-size: 245%;
+         transition: all .35s;
+         @media(max-width: 26.8em) {
+            font-size: 2rem;
+         }
+
+      }
+      
+      &:hover, &:active {
+         background-position: 100%;
+         color: $color-primary-light;
+         transform: translateX(1rem);    
+      }
+   }
+
+   /////FUNCTIONALITY
+   &Checkbox:checked ~&Background  {     
+     visibility: visible;
+      transform: scale(75);
+   }
+
+   &Checkbox:checked ~&Nav {
+      opacity: 1;
+      width: 100%;
+   }
+ 
+   &Checkbox:checked ~&Nav &List {
+      opacity: 1;
+      visibility: visible;
+   } 
+
+   /// HAMBURGER AND CROSS ICON
+   &Icon{
+       
+      position: relative;
+      margin-top: 3.5rem;
+      margin-left: 2rem;
+
+      &, &::before, &::after {         
+         width: 3rem;
+         height: .2rem;
+         background-color: $color-grey-dark-2;
+         display: inline-block;
+      }
+
+      &::before, &::after {
+         content: " ";
+         position: absolute;
+         left: 0;
+         transition: all .2s;
+      }
+
+      &::before {
+         top: -.8rem;
+      }
+      
+      &::after {
+         top: .8rem;
+      }
+      
+   }
+
+   &Button:hover &Icon::before {
+      transform: translateY(-.2rem);
+   }
+
+   &Button:hover &Icon::after {
+      transform: translateY(.2rem);
+   }
+
+   &Checkbox:checked ~ &Button &Icon {
+      background-color: transparent;     
+   }
+
+   &Checkbox:checked ~ &Button &Icon::before {
+      top: 0;
+      transform: rotate(135deg);
+   }
+
+   &Checkbox:checked ~ &Button &Icon::after {
+      top: 0;
+      transform: rotate(-135deg);
+   }
+} 

@@ -1,0 +1,95 @@
+.headText
+{
+   position: absolute;
+   text-align: center;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%); /*this property doesn't relate to position property. It is the property of element itself, and element moves according to the coordinates. e.g. translate(-50% -50%) means: move 50%left (distance covered=50% of element's width) and 50% up.(right bottom to left top/diagonally.)*/
+
+      
+ .primaryHeading
+ {
+   color: $color-white;
+   text-transform: uppercase;
+   line-height: 8rem;
+   font-size: 3.5rem;
+   font-weight: 900;
+   letter-spacing: 3.2rem;
+   margin-left: 2.2rem;
+   margin-right: auto;
+   display: block; /*with static value, the animation doesn't work*/
+   animation: moveToLeft 0.85s ease-out;
+   
+  @include respond(phone) {
+  letter-spacing: 1.4rem;
+  margin-left: .5rem;
+  }  
+
+   /* animation-timing-function: ease-out; animation runs fast at first, but finsishes slowly*/
+  
+   /* backface-visibility: hidden;   if the heading text shakes upward after finishing animation, use this to fix it*/
+  
+   /* animation-delay: 3s;  //animation will start after 3s*/
+ }
+   
+ .primaryHeadingSub
+ {
+   color: $color-white;
+   text-transform: uppercase;
+   display: block;
+   letter-spacing: 0.8rem;
+   font-size: 2rem;
+   font-weight: 500;
+   line-height: 4.5rem;
+   animation: moveToRight 0.85s ease-out;
+
+   @include respond(phone){
+     letter-spacing: .5rem;
+     font-size: 1.5rem;
+   }
+ }
+}
+
+.secondaryHeading
+{
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: $color-grey-dark;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  display: inline-block; //this will make the gradient to not take the 100% width, instead only showing it to the length of the text.
+  background-clip: text; // it is necessary to define this for compatibility in browsers and for not getting an error.
+  -webkit-background-clip: text;    //this porperty clips the background-image to text.
+  color: transparent;  //the text-becomes transparent, and we only see the image(which is gradient) clipped to it.
+  letter-spacing: .2rem;
+  transition: transform .15s;
+ 
+  @include respond(tabletPort) {
+    font-size: 3rem;
+  }
+
+  @include respond(phone) {
+  font-size: 2.5rem;
+  }
+
+  &:hover {
+    transform: skewY(2deg) skewX(10deg) scale(1.05);
+    text-shadow: .5rem 1rem 3rem rgba($color-black, 0.6);
+  }
+}
+
+.tertiaryHeading {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+  line-height: 2.3rem;
+
+  &:not(:last-child){
+    margin-bottom: 3rem;
+  }
+  
+}
+
+ 

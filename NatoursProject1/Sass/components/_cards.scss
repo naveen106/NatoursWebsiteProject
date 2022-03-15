@@ -1,0 +1,229 @@
+.cards {
+   
+  //perspective needs to be high, otherwise what will happen, you can test it yourself
+   perspective:  150rem;         //this will make card appear to be flipped (like 3d instead of rotating 180deg only on the screen which appears 2d)
+   -moz-perspective: 150rem;  //for mozilla firefox compatability 
+   position: relative;
+   height: 50rem;      //class "cards's" height collapses, so we have to specify this particularly.
+   
+   &Side
+   {
+      height: 50rem; 
+      transition: all 0.7s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;                  //important. Because absolute postioning collapses the width.
+      backface-visibility: hidden;  //this will hide the back part when card is not on hover state.
+      border-radius: .5rem;
+      box-shadow: 0 0 10rem rgba($color-black, 0.3);
+      overflow: hidden;
+
+      &Front {
+         background-color: $color-white;
+        
+      }
+
+      &Back {
+         background-color: purple;
+         transform: rotateY(180deg);
+
+         &-1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+         }
+
+         &-2 {     //for the second card.
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.85), rgba($color-primary-dark, 0.85)); 
+         }
+
+         &-3 {     //for the third card.
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, 0.85), rgba($color-tertiary-dark, 0.85)); 
+         }
+      }
+      
+   }
+
+   &:hover &SideFront
+      {
+         transform: rotateY(-180deg);
+      }
+   
+   &:hover &SideBack
+     {
+         transform: rotateY(0deg);
+     }
+
+   ////STYLING THE FRONT SIDE OF THE CARD 
+   &Picture {
+      background-size: cover;
+      height: 23rem;
+      background-blend-mode: screen;   //this property doesn't work in Microsoft Edge and IE.
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
+
+      &-1 {
+         background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(img/nat-5.jpg); //linear gradient will blend with image according to selected blend mode
+      }
+
+      &-2 {    //for the second card
+         background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.85), rgba($color-primary-dark, 0.85)), url(img/nat-6.jpg); //linear gradient will blend with image according to selected blend mode
+      }
+
+      
+      &-3 {     //for the third card.
+         background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, 0.85), rgba($color-tertiary-dark, 0.85)), url(img/nat-7.jpg); 
+      }
+   }
+
+   &Heading {
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: $color-white;
+      position: absolute;
+      right: 0.1rem;
+      top: 13rem;
+      text-align: right;
+      width: 55%;
+   }
+
+   &HeadingSpan {
+      display: inline-block;
+      padding: .5rem 1rem;
+      box-decoration-break: clone;  //doesn't work without '-webkit' prefix in chrome. applies the same styles to the broken box(second box 'THE EXPLORER' text) of the same element which appeard 'cause of less width.
+      -webkit-box-decoration-break: clone;  
+
+      &-1 {
+         background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.85), rgba($color-secondary-dark, 0.85));
+         
+      }
+
+      &-2 {    //for the second card
+         background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.85), rgba($color-primary-dark, 0.85));
+      }     
+      
+   }
+
+   &HeadingSpanThirdCard{
+      @include headingThirdCard;
+   }
+   &HeadingSpan-3 {     //for the third card.
+      @include headingSpanThirdCard;
+      background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, 0.85), rgba($color-tertiary-dark, 0.85)); 
+   }
+
+   &Details
+   {
+      padding-top: 3rem;
+      
+      ul {
+         list-style: none;
+         width: 80%;
+         margin: 0 auto;   
+
+         li {
+            text-align: center;
+            font-size: 1.6rem;
+            padding: 1rem;
+       
+            &:not(:last-child)
+            {
+               border-bottom: .1rem solid rgba($color-grey-dark, 0.3);
+
+            }
+         }
+      }
+   } 
+
+   ////BACK SIDE STYLING
+   &Cta
+   {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);  //to center 
+   }
+
+   &PriceBox {
+      text-align: center;
+      color: $color-white;
+      font-weight: 200;
+   }
+
+   &PriceOnly {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+   }
+
+   &PriceValue {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+   }
+
+
+
+   @include respond(tabletPort){
+      position: relative;
+      height: auto;      //class "cards's" height collapses, so we have to specify this particularly.
+      box-shadow: 0 0 10rem rgba($color-black, 0.3);
+     
+      &Side
+      {  
+         box-shadow: none;
+         position: relative;
+         height: auto; 
+         width: 100%;                  //important. Because absolute postioning collapses the width.
+         border-radius: .3rem;
+
+         &Front {
+            background-color: $color-white;
+            padding-bottom: 4rem;
+         }
+
+         &Back {
+            background-color: purple;
+            transform: rotateY(0);
+            clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0% 100%); 
+         }
+      }
+
+      &Details {
+         padding: 2rem 2.3rem;
+      }
+
+      &:hover &SideFront
+         {
+            transform: rotateY(0deg);
+         }
+          
+      ////BACK SIDE STYLING
+      &Cta
+      {
+         position: relative;
+         top: 0;
+         left: 0;
+         transform: translate(0);  //to center 
+         text-align: center; 
+        
+         a {
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+         
+         }
+      }
+
+      &PriceBox {
+         margin-bottom: 1rem;        
+      }
+
+      &PriceOnly {
+         font-size: 1.8rem;
+         font-weight: 500;
+         margin-top: 3rem;
+      }
+
+      &PriceValue {
+         font-size: 5rem;
+         margin-bottom: 2rem;
+      }
+   }
+}

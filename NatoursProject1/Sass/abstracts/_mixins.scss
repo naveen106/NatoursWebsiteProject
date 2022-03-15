@@ -1,0 +1,101 @@
+@mixin clearFix {
+   &::after{content: '';
+   display: table;
+   clear: both;
+   }
+}
+
+@mixin text-gradient {
+   background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+   display: inline-block; //this will make the gradient to not take the 100% width, instead only showing it to the length of the text. Use it if gradient doesn't appear.
+   background-clip: text; // it is necessary to define this for compatibility in browsers and for not getting an error.
+   -webkit-background-clip: text;    //this porperty clips the background-image to text.
+   color: transparent;  //the text-becomes transparent, and we only see the image(which is gradient) clipped to it.
+}
+
+
+@mixin grid-float-settings {
+   float: left;
+
+   &:not(:last-child){                     //properties will be applied to every child except the last-child
+      margin-right: $space-horizontal;     
+   }
+}
+
+@mixin headingThirdCard {
+   font-size: 2.8rem;
+   font-weight: 300;
+   color: $color-white;
+   position: absolute;
+   right: 0;
+   text-align: right;   
+}
+
+@mixin headingSpanThirdCard {
+   display: inline-block;
+   padding: .5rem 1.5rem;
+   box-decoration-break: clone;  //doesn't work without '-webkit' prefix in chrome. applies the same styles to the broken box(second box 'THE EXPLORER' text) of the same element which appeard 'cause of less width.
+   -webkit-box-decoration-break: clone;     
+}
+     
+ @mixin centeringTheContent {      //must specify the height and width of the parent element
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ }
+
+ @mixin centeringTheContent-Popup {     //must specify the height and width of the parent element
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) scale(.7);
+ }
+
+
+ ///// MEDIA QUERIES
+ /* 
+ 0 - 600px : Phone 
+ 600 - 900 : Tablet Portrait
+ 900 - 1200 : Tablet Landscape
+ 1200 - 1800 : Desktop (Normal Code)
+ 1800+ : Big Desktop 
+ */
+
+ 
+
+ /*
+ $breakpoint argument choices
+ - phone
+ - tabletPort
+ - tabletLand
+ - bigDesktop        
+
+ 1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+   
+   @if $breakpoint == bigDesktop {
+      @media(min-width: 112.5em) { @content };  //1800px
+   }
+
+   @if $breakpoint == tabletLand-2 {  // only for features section, it's not included in <html> tag, therefore it doesn't affect the whole document.
+      @media(min-width: 56.25em) { @content };
+   }   
+   
+   @if $breakpoint == tabletLand {
+      @media(max-width: 75em) { @content };  //1200px   
+   } 
+
+   @if $breakpoint == tabletPort {
+      @media(max-width: 56.25em) { @content };  // 900px    
+   }
+
+   @if $breakpoint == phone {
+      @media(max-width: 37.5em) { @content }; //600px
+   }
+   
+  
+}
+ 

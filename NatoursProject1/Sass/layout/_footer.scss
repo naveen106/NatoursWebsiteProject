@@ -1,0 +1,114 @@
+.footer {
+   background-color: $color-grey-dark-2;
+   padding: 10rem 0;
+   font-size: 1.6rem;
+   height: 40%;
+
+   @include respond(tabPort){
+      padding: 8rem 8rem 0 8rem;
+   }
+
+   @include respond(phone){
+      padding: 6rem 5rem 0 5rem;
+   }
+   
+
+   &LogoBox {
+      text-align: center;
+      margin-bottom: 5rem;
+
+      @include respond(phone) {
+         margin-bottom: 2.5rem;
+      }
+
+      
+   }
+   &Logo {
+      margin-top: -3rem;
+      margin-bottom: 2rem;
+      width: 14rem;
+      height: auto;
+
+      @include respond(phone){
+         width: 12rem;
+         height: auto;
+         margin-bottom: 1rem;
+      }
+   } 
+   
+
+   &Navigation {
+      position: relative;
+      padding-top: 1.5rem;  
+      border-top: 1px solid rgba($color-grey-light-1, 0.5);
+      display: inline-block;
+
+      @include respond(tabletPort) {
+        font-size: 1.6rem;
+        letter-spacing: .1rem;
+        margin-top: 3rem;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @include respond(phone){
+        width: 65vw;
+        margin-top: 3rem;
+        font-size: 1.8rem;
+        letter-spacing: .1rem;
+        margin-right: auto;
+        margin-left: auto;
+                      
+      }
+   }
+
+   &List {      
+      list-style: none;  
+   }
+
+
+   &Items {
+      display: inline-block;      
+      &:not(:last-child) {
+         margin-right: 2rem;
+      }
+
+      @include respond(tabPort) {
+
+         font-size: 1.6rem;
+         letter-spacing: 15rem;
+       }
+ 
+       @include respond(phone){
+       //   width: 30rem;
+         font-size: 1.6rem;
+         letter-spacing: .1rem;
+       }
+   }
+
+   &Link {
+      text-decoration: none;
+      color: rgba($color-grey-light-1, 0.75);
+      padding: .3rem .1rem;
+      display: inline-block;
+
+      &:hover, &:active { 
+         color: $color-primary-light;
+         box-shadow: .1rem .2rem 2rem rgba($color-black, 0.8);
+         transform: rotate(-5deg) scale(1.1);
+         transition: all 0.1s;
+      }
+      
+   }
+
+   .credits {
+      color: rgba($color-grey-light-1, 0.75);
+      width: 97%;
+      display: inline-block;
+      padding-right: 0;
+      font-size: 1.65rem;
+      line-height: 2.5rem;
+
+    
+   }
+}

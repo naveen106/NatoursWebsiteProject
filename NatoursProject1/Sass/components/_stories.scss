@@ -1,0 +1,71 @@
+.stories{
+   background-color: rgba($color-white, .6);
+   width: 75%;
+   margin: 0 auto $space-vertical-small auto;
+   box-shadow: 0 1rem 6rem rgba($color-black, .35);
+   font-size: $used-font-size;
+   padding: 6rem 6rem 6rem 8rem;
+   transform: skewX(-12deg);
+   backface-visibility: hidden;
+   transition: all 0.45s;
+
+
+   &Shape {
+      position: relative;
+      width: 15rem;
+      height: 15rem;
+      float: left;
+      border-radius: 10rem;
+      -webkit-shape-outside: circle(50%); //for safari browser
+      shape-outside: circle(50%); 
+     // -webkit-clip-path: circle(80%);
+     // clip-path: circle(50%);     //VIP
+      backface-visibility: hidden;
+      transform: translateX(-2rem) skewX(12deg);      
+   }
+      
+
+  
+   &Image {
+      width: 100%;
+      height: 100%;        //use both width and height for gettting circle through border-radius
+      transform: translateX(-15%) scale(1.1);  
+      backface-visibility: hidden;
+      transition: all 0.45s;   
+    //  -webkit-clip-path: circle(50%);
+    //  clip-path: circle(50%); 
+      border-radius: 10rem;         //had to use border-radius to make a circle 'cause clip-path property was creating a vertical line on the right side of circle.
+            
+   }
+
+   &Text {
+      transform: skewX(12deg);
+   }
+
+   &Caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      line-height: 2rem;
+      transform: translate(-75%, -20%);
+      text-align: center;
+      font-size: $used-font-size;
+      color: $color-white;
+      opacity: 0;
+    //  backface-visibility: hidden;
+      transition: all 0.45s;
+   }
+
+   &:hover &Caption {
+      opacity: 1;
+      backface-visibility: hidden;
+      transform: translate(-75%, -50%);
+   }
+
+   &:hover &Image {
+      filter: blur(.3rem) brightness(90%);          //if(brightness > 100%) { alert("Image will get brighter");} if(brightness < 100%){ alert("image will get darker");}
+    // backface-visibility: hidden;
+      transform: translateX(-15%) scale(1.05);
+      
+   }
+}

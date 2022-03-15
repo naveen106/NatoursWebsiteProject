@@ -1,0 +1,42 @@
+*, *::after, *::before {
+   margin: 0; 
+   padding: 0;
+   box-sizing: inherit;    
+}
+  
+html{
+   font-size: 62.5%;   /*now for the linked html document, root font-size is 10px (not 16px). So now, 10px = 1rem.*/
+ 
+   @include respond(bigDesktop) {             //bigDesktop
+      font-size: 81.25%;   // 1em = 12px
+   }
+  
+   @include respond(tabletLand){         //tabletLand
+      font-size: 56.25%;  //1em = 9px     
+   }
+
+   @include respond(tabletPort) {     //tabletPort
+      font-size: 50%;  // 1em = 8px
+   } 
+
+   @include respond(phone) {
+      font-size: 43.75%;       //1em = 7px    
+   }
+}
+    
+body
+  {
+   box-sizing: border-box;  
+   margin: 2.5rem;   
+   font-family: Lato, Candara, sans-serif;
+   color: $color-grey-dark;
+
+   @include respond(tabletPort) {
+      margin: .5rem;
+   }
+
+   @include respond(phone) {
+      margin: .2rem;
+   }
+  }
+  

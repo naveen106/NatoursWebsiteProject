@@ -1,0 +1,104 @@
+.form
+{   
+   @include respond(phone){
+      width: 295%;      
+      div h2 {
+      text-shadow: .1rem .2rem .1rem white;
+       }
+   }
+
+   &Group {
+      &:not(:last-child) {
+         margin-bottom: 2.5rem;
+      }     
+   }
+
+   &Input {
+      font-size: 1.6rem;
+      font-family: inherit;
+      padding: 1rem 2rem;
+      background-color: rgba($color-white, 0.5);
+      display: block;
+      border: none;    
+      border-bottom: .3rem solid transparent;         //this will stop (hide) the downward movement when green border appears.
+      width: 90%;
+      color: inherit;
+      transition: all .4s;
+
+      &:focus {
+         outline: none;
+         box-shadow: .1rem .3rem 3rem rgba($color-black, 0.4);
+         border-bottom: 2px solid $color-primary-dark;
+      }
+      &:focus:invalid {
+         box-shadow: .1rem .3rem 3rem rgba($color-black, 0.4);
+         border-bottom: 2px solid $color-secondary-dark;
+      }
+
+
+      &::-webkit-input-placeholder {            //works on chrome and safari only 
+         color: rgba($color-grey-dark, .72); 
+      }
+   }
+
+   &Label {
+      font-size: 1.4rem;
+      margin-left: 2rem;
+      display: inline-block;
+      font-weight: 700;
+      margin-top: .65rem;
+      transition: all .3s;
+   }
+
+   &Input:placeholder-shown ~ &Label {         // ' ~ ' is sibling selector. This rule means when at 'formInput', the placeholder text is appearing, then the sibling with class name 'formLabel' should show these properties.
+      opacity: 0;    //visibility : hidden can be used, but its not animatable property.
+      transform: translateY(-4.1rem);
+   }
+
+   &RadioGroup {
+      width: 49.5%;
+      display: inline-block;
+      transform: translateX(2rem);        
+   }
+
+   &RadioLabel {
+      position: relative;
+      padding-left: 4rem;
+      cursor: pointer;
+      font-size: $font-for-form;      
+   }
+
+   &RadioInput {
+     display: none;
+   }
+ 
+   &RadioButton {
+      position: absolute;
+      left: .1rem;
+      top: -0.5rem;
+      height: 2.5rem;
+      width: 2.5rem;
+      display: inline-block;
+      border: .5rem solid $color-primary-dark;
+      border-radius: 50%;
+
+      &::after { 
+         content: '';
+         height: 1rem;
+         width: 1rem;
+         background-color: $color-primary-dark;
+         display: block;
+         position: absolute;
+         left: 51%;
+         top: 52%;
+         border-radius: 50%;
+         transform: translate(-50%, -50%);
+         opacity: 0;
+         transition: opacity 0.15s;
+      }
+   }
+
+   &RadioInput:checked ~ &RadioLabel &RadioButton::after {     //when we click the radio button, it becomes checked and then selects the siblings...makes after element
+      opacity: 1;
+   }
+}

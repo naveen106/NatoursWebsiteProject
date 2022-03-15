@@ -1,0 +1,32 @@
+.u-center-text{
+   text-align: center;
+}
+
+.u-margin-bottom-big{margin-bottom: 8rem;
+
+@include respond(tabletPort){
+   margin-bottom: 6rem;
+}
+
+@include respond(phone){
+   margin-bottom: 4.5rem
+}
+
+
+}
+.u-margin-top-big{margin-top: 7rem;}
+.u-margin-bottom-medium{margin-bottom: 4rem;}
+.u-margin-bottom-medium2{margin-bottom: 3rem;}
+.u-margin-bottom-small{margin-bottom: 1.2rem;}
+
+
+.ucenter-element{
+   @include respond(phone)
+   {
+      position: absolute;
+      right: 2rem;
+   }
+
+   @include respond(tabletPort)
+
+}
