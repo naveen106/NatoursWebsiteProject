@@ -1,4 +1,4 @@
 *node_modules
-*linea_complete_1.0.zip
+*.zip
 /.vscode
 /debug.log
