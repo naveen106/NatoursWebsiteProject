@@ -13,11 +13,12 @@
  - bigDesktop 
  1em = 16px
 */
+
 *, *::after, *::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit; }
-
+ 
 html {
   font-size: 62.5%;
   /*now for the linked html document, root font-size is 10px (not 16px). So now, 10px = 1rem.*/ }
