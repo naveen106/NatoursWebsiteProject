@@ -2,3 +2,6 @@
 *.zip
 /.vscode
 /debug.log
+styles.comp.css
+styles.concat.css
+styles.prefix.css
