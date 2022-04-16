@@ -161,7 +161,8 @@
 
 
 
-   @include respond(tabletPort){
+   //@include respond(tabletPort){
+   @media only screen and(max-width: 56.25em), only screen and (hover:none){
       position: relative;
       height: auto;      //class "cards's" height collapses, so we have to specify this particularly.
       box-shadow: 0 0 10rem rgba($color-black, 0.3);

@@ -77,23 +77,23 @@
 @mixin respond($breakpoint) {
    
    @if $breakpoint == bigDesktop {
-      @media(min-width: 112.5em) { @content };  //1800px
+      @media only screen and (min-width: 112.5em) { @content };  //1800px
    }
 
    @if $breakpoint == tabletLand-2 {  // only for features section, it's not included in <html> tag, therefore it doesn't affect the whole document.
-      @media(min-width: 56.25em) { @content };
+      @media only screen and (min-width: 56.25em) { @content };
    }   
    
    @if $breakpoint == tabletLand {
-      @media(max-width: 75em) { @content };  //1200px   
+      @media only screen and (max-width: 75em) { @content };  //1200px   
    } 
 
    @if $breakpoint == tabletPort {
-      @media(max-width: 56.25em) { @content };  // 900px    
+      @media only screen and(max-width: 56.25em) { @content };  // 900px    
    }
 
    @if $breakpoint == phone {
-      @media(max-width: 37.5em) { @content }; //600px
+      @media only screen and (max-width: 37.5em) { @content }; //600px
    }
    
   
