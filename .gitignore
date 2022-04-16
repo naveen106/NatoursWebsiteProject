@@ -2,6 +2,7 @@
 *.zip
 /.vscode
 /debug.log
+.parcel-cache
 styles.comp.css
 styles.concat.css
 styles.prefix.css
