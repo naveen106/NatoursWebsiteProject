@@ -21,9 +21,8 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: npm install, build:css, and test
-        run: |
-          npm install
+      - name: build:css, and test
+        run: |        
           npm run build:css --if-present
           npm run test --if-present
       
