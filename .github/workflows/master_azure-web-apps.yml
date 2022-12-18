@@ -21,8 +21,10 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: build:css, and test
-        run: |        
+      - name: clean, install, build:css, and test
+        run: |
+          npm cache clean --force 
+          npm install
           npm run build:css --if-present
           npm run test --if-present
       
@@ -37,7 +39,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: https://azure-web-apps.azurewebsites.net
 
     steps:
       - name: Download artifact from build job
